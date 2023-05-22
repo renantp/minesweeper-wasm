@@ -1,0 +1,17 @@
+{
+  "name": "minesweeper_lib",
+  "collaborators": [
+    "Renan <renannguyen@pm.me>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "minesweeper_lib_bg.wasm",
+    "minesweeper_lib.js",
+    "minesweeper_lib.d.ts"
+  ],
+  "module": "minesweeper_lib.js",
+  "types": "minesweeper_lib.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
