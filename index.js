@@ -2,7 +2,7 @@ import init, {greet,isLost, newField, getState, openFields, toggleFlag} from './
 
     async function main(){
       await init();
-    //   greet("Renan");
+      greet("Renan<renannguyen@pm.me>");
       render();
       let restartBtn = document.getElementById("restartBtn");
       restartBtn.addEventListener("click", evt =>{
