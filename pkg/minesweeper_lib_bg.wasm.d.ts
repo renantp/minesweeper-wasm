@@ -5,6 +5,8 @@ export function greet(a: number, b: number): void;
 export function getState(a: number): void;
 export function openFields(a: number, b: number): void;
 export function toggleFlag(a: number, b: number): void;
+export function newField(a: number, b: number, c: number, d: number): void;
+export function isLost(): number;
 export function __wbindgen_malloc(a: number): number;
 export function __wbindgen_realloc(a: number, b: number, c: number): number;
 export function __wbindgen_add_to_stack_pointer(a: number): number;

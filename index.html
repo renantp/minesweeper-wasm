@@ -17,54 +17,24 @@
       height: 1.5rem;
       /* line-height: 1.5rem; */
     }
+    #root{
+      display: inline-grid;
+    }
+    h2 {
+      margin: 0em;
+    }
   </style>
 </head>
 <body>
-  <div id="root">
-    What!?
+  <div>
+    <h2 id="gameTitle">Minesweeper v1.0</h2>
+    <div id="root">
+      What!?
+    </div>
+    <button id="restartBtn" >Restart</button>
   </div>
 
-  <script type="module">
-    import init, {greet, getState, openFields, toggleFlag} from './pkg/minesweeper_lib.js'
-
-    async function main(){
-      await init();
-      // greet("Renan");
-      render();
-    }
-    function render() {
-      let data = getState().split("\n").map(row => row.trim().split(/\s+/));
-      let root = document.getElementById("root");
-      root.innerText = "";
-      root.style.display = "inline-grid";
-      root.style.gridTemplate = `repeat(${data.length}, auto) / repeat(${data[0].length}, auto)`;
-
-      for ( let y=0;y < data.length; y++ ){
-        for ( let x = 0; x< data[y].length; x++ ){
-          let element = document.createElement("a");
-          element.classList.add("field");
-          element.href = "#";
-          element.innerText = data[y][x];
-
-          element.addEventListener("click", evt=> {
-            evt.preventDefault();
-            console.log(x, y);
-            openFields(x, y);
-            render();
-          });
-
-          element.addEventListener("contextmenu", evt => {
-            evt.preventDefault();
-
-            toggleFlag(x, y);
-            render();
-          });
-
-          root.appendChild(element);
-        }
-      }
-    }
-    main();
+  <script type="module" src="index.js">
   </script>
 </body>
 </html>

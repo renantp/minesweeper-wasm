@@ -66,6 +66,22 @@ impl Minesweeper {
             lost: false,
         }
     }
+    pub fn restart(&mut self, width: usize, height: usize, mine_count: usize) {
+        // self = new(width, height, mine_count);
+        self.width = width;
+        self.height = height;
+        self.open_fields = HashSet::new();
+        self.mines = {
+            let mut mines = HashSet::new();
+
+            while mines.len() < mine_count {
+                mines.insert((random_range(0, width), random_range(0, height)));
+            }
+            mines
+        };
+        self.flagged_fields = HashSet::new();
+        self.lost = false;
+    }
 
     pub fn iter_neighbors(&self, (x, y): Position) -> impl Iterator<Item = Position> {
         let width = self.width;
@@ -127,6 +143,9 @@ impl Minesweeper {
             self.flagged_fields.insert(pos);
         }
     }
+    pub fn is_lost(&self) -> bool {
+        self.lost
+    }
 }
 #[cfg(test)]
 mod tests {
@@ -137,6 +156,8 @@ mod tests {
         ms.open((5, 5));
         ms.toggle_flag((5, 6));
         ms.open((5, 6));
+        println!("{}", ms);
+        ms.restart(15, 15, 30);
         println!("{}", ms);
     }
 }

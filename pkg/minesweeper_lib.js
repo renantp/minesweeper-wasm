@@ -127,6 +127,37 @@ export function toggleFlag(x, y) {
     wasm.toggleFlag(x, y);
 }
 
+/**
+* @param {number} x
+* @param {number} y
+* @param {number} mine
+* @returns {string}
+*/
+export function newField(x, y, mine) {
+    let deferred1_0;
+    let deferred1_1;
+    try {
+        const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+        wasm.newField(retptr, x, y, mine);
+        var r0 = getInt32Memory0()[retptr / 4 + 0];
+        var r1 = getInt32Memory0()[retptr / 4 + 1];
+        deferred1_0 = r0;
+        deferred1_1 = r1;
+        return getStringFromWasm0(r0, r1);
+    } finally {
+        wasm.__wbindgen_add_to_stack_pointer(16);
+        wasm.__wbindgen_free(deferred1_0, deferred1_1);
+    }
+}
+
+/**
+* @returns {boolean}
+*/
+export function isLost() {
+    const ret = wasm.isLost();
+    return ret !== 0;
+}
+
 async function __wbg_load(module, imports) {
     if (typeof Response === 'function' && module instanceof Response) {
         if (typeof WebAssembly.instantiateStreaming === 'function') {

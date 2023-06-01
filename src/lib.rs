@@ -37,3 +37,13 @@ pub fn toggle_flag(x: usize, y: usize) {
         ms.borrow_mut().toggle_flag((x, y));
     });
 }
+#[wasm_bindgen(js_name = newField)]
+pub fn new_field(x: usize, y: usize, mine: usize) -> String {
+    MINESWEEPER.with(|ms| ms.borrow_mut().restart(x, y, mine));
+    MINESWEEPER.with(|ms| ms.borrow().to_string())
+}
+
+#[wasm_bindgen(js_name = isLost)]
+pub fn is_lost() -> bool {
+    MINESWEEPER.with(|ms| ms.borrow().is_lost())
+}

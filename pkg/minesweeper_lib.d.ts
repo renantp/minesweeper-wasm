@@ -18,6 +18,17 @@ export function openFields(x: number, y: number): void;
 * @param {number} y
 */
 export function toggleFlag(x: number, y: number): void;
+/**
+* @param {number} x
+* @param {number} y
+* @param {number} mine
+* @returns {string}
+*/
+export function newField(x: number, y: number, mine: number): string;
+/**
+* @returns {boolean}
+*/
+export function isLost(): boolean;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -27,6 +38,8 @@ export interface InitOutput {
   readonly getState: (a: number) => void;
   readonly openFields: (a: number, b: number) => void;
   readonly toggleFlag: (a: number, b: number) => void;
+  readonly newField: (a: number, b: number, c: number, d: number) => void;
+  readonly isLost: () => number;
   readonly __wbindgen_malloc: (a: number) => number;
   readonly __wbindgen_realloc: (a: number, b: number, c: number) => number;
   readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
